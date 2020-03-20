@@ -1,8 +1,11 @@
 # linktap Binding
 
-_Give some details about what this binding is meant for - a protocol, system, specific device._
+The binding allows to connecto to the Linktap Gateway and control the Taplinker Wireless Water timer.
+Basic functions are to turn on/off watering and change the watering schedule.
 
-_If possible, provide some resources like pictures, a YouTube video, etc. to give an impression of what can be done with this binding. You can place such resources into a `doc` folder next to this README.md._
+<!-- _Give some details about what this binding is meant for - a protocol, system, specific device._ -->
+
+<!-- _If possible, provide some resources like pictures, a YouTube video, etc. to give an impression of what can be done with this binding. You can place such resources into a `doc` folder next to this README.md._ -->
 
 ## Supported Things
 
@@ -10,15 +13,22 @@ Support LinkTap devices:
 - Gateway (Model: GW-01)
 - Taplinker (Model: TP-1B Wireless Watering Timer)
 
-_Please describe the different supported things / devices within this section._
+<!-- Please describe the different supported things / devices within this section._
 _Which different types are supported, which models were tested etc.?_
-_Note that it is planned to generate some part of this based on the XML files within ```src/main/resources/ESH-INF/thing``` of your binding._
+_Note that it is planned to generate some part of this based on the XML files within ```src/main/resources/ESH-INF/thing``` of your binding. -->
 
 ## Discovery
 
-_Describe the available auto-discovery features here. Mention for what it works and what needs to be kept in mind when using it._
+Once the Gateway is setup accordingly the Taplinker should be discovered automatically.
+
+<!-- Describe the available auto-discovery features here. Mention for what it works and what needs to be kept in mind when using it. -->
 
 ## Binding Configuration
+
+Required information:
+- Create an API key following instructions https://www.link-tap.com/#!/api-for-developers
+- Linktap username
+- Gateway ID (first 16 chars)
 
 _If your binding requires or supports general configuration settings, please create a folder ```cfg``` and place the configuration file ```<bindingId>.cfg``` inside it. In this section, you should link to this file and provide some information about the options. The file could e.g. look like:_
 
@@ -47,9 +57,13 @@ _Here you should provide information about available channel types, what their m
 
 _Note that it is planned to generate some part of this based on the XML files within ```src/main/resources/ESH-INF/thing``` of your binding._
 
-| channel  | type   | description                  |
-|----------|--------|------------------------------|
-| control  | Switch | This is the control channel  |
+| channel        | type   | description                  |
+|----------      |--------|------------------------------|
+| control        | Switch | This is the control channel  |
+| power          | Switch | Watering on/off              |
+| schdule        |                                       |
+| battery level  | number | Battery Level                |
+| wireless sign. | number | Wireless signal strength     |
 
 ## Full Example
 
