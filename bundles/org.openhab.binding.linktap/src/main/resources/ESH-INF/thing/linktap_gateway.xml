@@ -4,44 +4,24 @@
 	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
 	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
-	<!-- Sample Thing Type -->
-	<thing-type id="GW-01">
-		<label>LinkTap Gateway GW-01</label>
-		<description>LinkTap Gateway GW-01</description>
-
-		<channels>
-			<channel id="status" typeId="sample-channel" />
-		</channels>
-
-		<config-description>
-			<parameter name="config1" type="text" required="true">
-				<label>Sample Parameter</label>
-				<description>This is a sample text configuration parameter</description>
-			</parameter>
-		</config-description>
-
-	</thing-type>
-
-	<!-- Sample Channel Type -->
-	<channel-type id="sample-channel">
-		<item-type>linktapItem</item-type>
-		<label>linktap Binding Channel</label>
-		<description>Sample channel for linktap Binding</description>
-	</channel-type>
+	<!--LinkTap Gateway-->
 	<bridge-type id="gateway">
 		<label>Linktap Gateway</label>
 		<description>Linktap Gateway GW-01</description>
 		<channels>
 			<channel typeId="status" id="status"></channel>
 		</channels>
+		<representation-property>gatewayId</representation-property>
 		<config-description>
-			<parameter name="username" type="text">
+			<parameter name="username" type="text" required="true">
 				<label>Linktap Username</label>
-				<description>Username for login for Linktap cloud account</description></parameter>
-			<parameter name="apiKey" type="text">
+				<description>Username for login for Linktap cloud account</description>
+			</parameter>
+			<parameter name="apiKey" type="text" required="true">
 				<context>Password</context>
 				<label>Api Key</label>
-				<description>API key for accessing Linktap API https://www.link-tap.com/api/</description></parameter></config-description>
+				<description>API key for accessing Linktap API https://www.link-tap.com/api/</description>
+			</parameter></config-description>
 	</bridge-type>
 
 </thing:thing-descriptions>
