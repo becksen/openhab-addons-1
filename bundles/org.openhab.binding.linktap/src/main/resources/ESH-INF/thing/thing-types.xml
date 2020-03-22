@@ -7,10 +7,13 @@
 	<!-- Sample Thing Type -->
 	<thing-type id="TP-1B">
 		<label>Taplinker Model TP-1B</label>
-		<description>Taplinker Model TP-1B</description>
+		<description>Taplinker Model TP-1B Wireless Water Timer</description>
 
 		<channels>
-			<channel id="channel1" typeId="sample-channel" />
+			<channel id="status" typeId="status" /><channel typeId="location" id="location"></channel>
+			<channel typeId="signal-strength" id="signal"></channel>
+			<channel typeId="battery-level" id="battery-status"></channel>
+			<channel typeId="power" id="watering"></channel>
 		</channels>
 
 		<config-description>
@@ -23,10 +26,11 @@
 	</thing-type>
 
 	<!-- Sample Channel Type -->
-	<channel-type id="sample-channel">
-		<item-type>linktapItem</item-type>
-		<label>linktap Binding Channel</label>
-		<description>Sample channel for linktap Binding</description>
+	<channel-type id="status">
+		<item-type>String</item-type>
+		<label>Device Status</label>
+		<description>States if device is connected or not</description>
+		<state readOnly="true"></state>
 	</channel-type>
 
 </thing:thing-descriptions>
