@@ -5,7 +5,7 @@
 	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
 	<!-- Sample Thing Type -->
-	<thing-type id="TP-1B">
+	<thing-type id="TP1B">
 		<label>Taplinker Model TP-1B</label>
 		<description>Taplinker Model TP-1B Wireless Water Timer</description>
 
