@@ -12,7 +12,7 @@
  */
 package org.openhab.binding.linktap.internal;
 
-import static org.openhab.binding.linktap.internal.linktapBindingConstants.*;
+import static org.openhab.binding.linktap.internal.linktapBindingConstants.THING_TYPE_BRIDGE;
 
 import java.util.Collections;
 import java.util.Set;
@@ -36,7 +36,12 @@ import org.osgi.service.component.annotations.Component;
 @Component(configurationPid = "binding.linktap", service = ThingHandlerFactory.class)
 public class linktapHandlerFactory extends BaseThingHandlerFactory {
 
-    private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Collections.singleton(THING_TYPE_SAMPLE);
+    private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Collections.singleton(THING_TYPE_BRIDGE); // or
+                                                                                                                  // tp1b
+                                                                                                                  // to
+                                                                                                                  // be
+                                                                                                                  // checked
+                                                                                                                  // again
 
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) {
@@ -47,7 +52,8 @@ public class linktapHandlerFactory extends BaseThingHandlerFactory {
     protected @Nullable ThingHandler createHandler(Thing thing) {
         ThingTypeUID thingTypeUID = thing.getThingTypeUID();
 
-        if (THING_TYPE_SAMPLE.equals(thingTypeUID)) {
+        // or thing type_tp1b?
+        if (THING_TYPE_BRIDGE.equals(thingTypeUID)) {
             return new linktapHandler(thing);
         }
 
