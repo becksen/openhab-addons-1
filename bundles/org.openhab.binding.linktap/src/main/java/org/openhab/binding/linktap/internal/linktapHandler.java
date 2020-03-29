@@ -12,7 +12,7 @@
  */
 package org.openhab.binding.linktap.internal;
 
-import static org.openhab.binding.linktap.internal.linktapBindingConstants.*;
+import static org.openhab.binding.linktap.internal.linktapBindingConstants.CHANNEL_STATUS;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
@@ -44,7 +44,7 @@ public class linktapHandler extends BaseThingHandler {
 
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
-        if (CHANNEL_1.equals(channelUID.getId())) {
+        if (CHANNEL_STATUS.equals(channelUID.getId())) {
             if (command instanceof RefreshType) {
                 // TODO: handle data refresh
             }

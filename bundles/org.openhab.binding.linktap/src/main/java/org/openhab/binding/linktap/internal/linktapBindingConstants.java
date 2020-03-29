@@ -43,4 +43,7 @@ public class linktapBindingConstants {
     // List of all Channel ids
     // public static final String CHANNEL_1 = "channel1";
     public static final String CHANNEL_STATUS = "status";
+
+    // REST API URL
+    public static final String REST_URL = "https://www.link-tap.com/api/";
 }
