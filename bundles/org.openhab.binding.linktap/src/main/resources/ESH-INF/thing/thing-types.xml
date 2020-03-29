@@ -18,6 +18,7 @@
 			<channel typeId="battery-level" id="battery-status"></channel>
 			<channel typeId="power" id="watering"></channel>
 		</channels>
+		<representation-property>taplinkerId</representation-property>
 
 	</thing-type>
 

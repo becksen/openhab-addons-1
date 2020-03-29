@@ -10,17 +10,17 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.linktap.internal;
+package org.openhab.binding.linktap.internal.data;
 
 /**
- * The {@link linktapConfiguration} class contains fields mapping thing configuration parameters.
+ * Interface for uniquely identifiable Nest objects (device or a structure).
  *
- * @author Timmy Becker - Initial contribution
+ * @author Timmy Becker- Initial contribution
  */
-public class linktapConfiguration {
+public interface linktapIdentifiable {
 
     /**
-     * Sample configuration parameter. Replace with your own.
+     * Returns the identifier that uniquely identifies the linktap object (deviceId or structureId).
      */
-    public String config1;
+    String getId();
 }
