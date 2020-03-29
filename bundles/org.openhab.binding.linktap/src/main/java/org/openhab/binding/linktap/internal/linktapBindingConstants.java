@@ -30,6 +30,33 @@ public class linktapBindingConstants {
 
     private static final String BINDING_ID = "linktap";
 
+    /** REST API URL */
+    public static final String REST_URL = "https://www.link-tap.com/api/";
+
+    /** REST API Entity switching watering On and Off */
+    public static final String REST_ON_OFF = "activateInstantMode";
+
+    /** REST API Entity to activate interval mode */
+    public static final String REST_INTERVAL_MODE = "activateIntervalMode";
+
+    /** REST API Entity to activate odd-even mode */
+    public static final String REST_ODD_EVEN_MODE = "activateOddEvenMode";
+
+    /** REST API Entity to activate 7-day mode */
+    public static final String REST_SEVEN_DAY_MODE = "activateSevenDayMode";
+
+    /** REST API Entity to activate month mode */
+    public static final String REST_MONTH_MODE = "activateMonthMode";
+
+    /** REST API Entity to get all devices */
+    public static final String REST_GET_DEVICES = "getAllDevices";
+
+    /** REST API Entity to get watering Status */
+    public static final String REST_GET_WATERING_STAT = "getWateringStatus";
+
+    /** REST API call Content-Type in Header */
+    public static final String REST_CONTENT_TYPE_PARAM = "application/json";
+
     // List of all Thing Type UIDs
     // public static final ThingTypeUID THING_TYPE_SAMPLE = new ThingTypeUID(BINDING_ID, "sample");
     public static final ThingTypeUID THING_TYPE_BRIDGE = new ThingTypeUID(BINDING_ID, "gateway");
@@ -42,8 +69,20 @@ public class linktapBindingConstants {
 
     // List of all Channel ids
     // public static final String CHANNEL_1 = "channel1";
+
+    /** Channel for the Bridge/Gateway */
     public static final String CHANNEL_STATUS = "status";
 
-    // REST API URL
-    public static final String REST_URL = "https://www.link-tap.com/api/";
+    /** Channels for the Water Timer TP-1B */
+
+    public static final String CHANNEL_WATERING = "watering";
+
+    public static final String CHANNEL_BATTERY_STATUS = "battery-status";
+
+    public static final String CHANNEL_SIGNAL_STRENGTH = "signal";
+
+    public static final String CHANNEL_Location = "location";
+
+    public static final String CHANNEL_POWER = "power";
+
 }

@@ -6,6 +6,9 @@
 
 	<!-- Sample Thing Type -->
 	<thing-type id="TP1B">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="gateway" />
+		</supported-bridge-type-refs>
 		<label>Taplinker Model TP-1B</label>
 		<description>Taplinker Model TP-1B Wireless Water Timer</description>
 
