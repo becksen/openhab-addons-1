@@ -30,7 +30,7 @@ import org.osgi.service.component.annotations.Component;
  * The {@link linktapHandlerFactory} is responsible for creating things and thing
  * handlers.
  *
- * @author becksen - Initial contribution
+ * @author Timmy Becker - Initial contribution
  */
 @NonNullByDefault
 @Component(configurationPid = "binding.linktap", service = ThingHandlerFactory.class)
@@ -54,9 +54,13 @@ public class linktapHandlerFactory extends BaseThingHandlerFactory {
 
         // or thing type_tp1b?
         if (THING_TYPE_BRIDGE.equals(thingTypeUID)) {
+            // myImplementation
+
             return new linktapHandler(thing);
         }
 
-        return null;
+        // return null;
+        // TB Test
+        return new linktapHandler(thing);
     }
 }

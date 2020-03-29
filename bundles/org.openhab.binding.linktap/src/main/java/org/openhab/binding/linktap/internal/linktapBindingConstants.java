@@ -23,7 +23,7 @@ import org.eclipse.smarthome.core.thing.ThingTypeUID;
  * The {@link linktapBindingConstants} class defines common constants, which are
  * used across the whole binding.
  *
- * @author becksen - Initial contribution
+ * @author Timmy Becker- Initial contribution
  */
 @NonNullByDefault
 public class linktapBindingConstants {
