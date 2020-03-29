@@ -55,13 +55,13 @@ public class linktapDiscoveryService extends AbstractDiscoveryService {
             THING_TYPE_TP1B, this::addDeviceDiscoveryResult);
 
     @SuppressWarnings("rawtypes")
-    private final List<DiscoveryDataListener> discoveryDataListeners = Stream.of(cameraDiscoveryDataListener,
+    private final List<DiscoveryDataListener> discoveryDataListeners = Stream.of(watertimerDiscoveryDataListener,
             smokeDetectorDiscoveryDataListener, structureDiscoveryDataListener, thermostatDiscoveryDataListener)
             .collect(Collectors.toList());
 
     private final linktapBridgeHandler bridge;
 
-    private static class DiscoveryDataListener<T> implements NestThingDataListener<T> {
+    private static class DiscoveryDataListener<T> implements linktapThingDataListener<T> {
         private Class<T> dataClass;
         private ThingTypeUID thingTypeUID;
         private BiConsumer<T, ThingTypeUID> onDiscovered;
