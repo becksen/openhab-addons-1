@@ -16,13 +16,11 @@
 
 package org.openhab.binding.linktap.handler;
 
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
 import org.eclipse.smarthome.core.types.Command;
-import org.openhab.binding.linktap.internal.linktapConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +35,7 @@ public class linktapBridgeHandler extends BaseBridgeHandler {
 
     private final Logger logger = LoggerFactory.getLogger(linktapBridgeHandler.class);
 
-    private @Nullable linktapConfiguration config;
+    // private @Nullable linktapConfiguration config;
 
     public linktapBridgeHandler(Bridge gateway) {
         super(gateway);
