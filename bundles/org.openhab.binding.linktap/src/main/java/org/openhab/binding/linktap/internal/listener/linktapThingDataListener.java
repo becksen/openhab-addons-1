@@ -41,8 +41,8 @@ public interface linktapThingDataListener<T> {
     /**
      * A Nest thing which previously had data is missing. E.g. it was removed from the account.
      *
-     * @param deviceId identifies the Nest thing
+     * @param linktapId identifies the Nest thing
      */
-    void onMissingData(String deviceId);
+    void onMissingData(String linktapId);
 
 }

@@ -60,6 +60,7 @@ public class linktapBindingConstants {
     // List of all Thing Type UIDs
     // public static final ThingTypeUID THING_TYPE_SAMPLE = new ThingTypeUID(BINDING_ID, "sample");
     public static final ThingTypeUID THING_TYPE_BRIDGE = new ThingTypeUID(BINDING_ID, "gateway");
+    public static final ThingTypeUID THING_TYPE_STRUCTURE = new ThingTypeUID(BINDING_ID, "structure");
 
     // supported linktap device Taplinker TP-1B
     public static final ThingTypeUID THING_TYPE_TP1B = new ThingTypeUID(BINDING_ID, "TP1B");

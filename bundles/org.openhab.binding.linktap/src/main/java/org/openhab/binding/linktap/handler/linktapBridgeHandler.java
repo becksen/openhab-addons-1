@@ -16,11 +16,22 @@
 
 package org.openhab.binding.linktap.handler;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
+import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
+import org.eclipse.smarthome.core.thing.binding.ThingHandler;
 import org.eclipse.smarthome.core.types.Command;
+import org.openhab.binding.linktap.internal.data.linktapIdentifiable;
+import org.openhab.binding.linktap.internal.listener.linktapThingDataListener;
+import org.openhab.binding.linktap.internal.update.LinktapCompositeUpdateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +47,9 @@ public class linktapBridgeHandler extends BaseBridgeHandler {
     private final Logger logger = LoggerFactory.getLogger(linktapBridgeHandler.class);
 
     // private @Nullable linktapConfiguration config;
+
+    private final LinktapCompositeUpdateHandler updateHandler = new LinktapCompositeUpdateHandler(
+            this::getPresentThingsLinktapIds);
 
     public linktapBridgeHandler(Bridge gateway) {
         super(gateway);
@@ -58,4 +72,39 @@ public class linktapBridgeHandler extends BaseBridgeHandler {
         updateStatus(ThingStatus.ONLINE);
     }
 
+    public <T> boolean addThingDataListener(Class<T> dataClass, linktapThingDataListener<T> listener) {
+        return updateHandler.addListener(dataClass, listener);
+    }
+
+    public <T> boolean addThingDataListener(Class<T> dataClass, String nestId, linktapThingDataListener<T> listener) {
+        return updateHandler.addListener(dataClass, nestId, listener);
+    }
+
+    public <T> boolean removeThingDataListener(Class<T> dataClass, linktapThingDataListener<T> listener) {
+        return updateHandler.removeListener(dataClass, listener);
+    }
+
+    public <T> boolean removeThingDataListener(Class<T> dataClass, String nestId,
+            linktapThingDataListener<T> listener) {
+        return updateHandler.removeListener(dataClass, nestId, listener);
+    }
+
+    public @Nullable <T> T getLastUpdate(Class<T> dataClass, String linktapId) {
+        return updateHandler.getLastUpdate(dataClass, linktapId);
+    }
+
+    public <T> List<T> getLastUpdates(Class<T> dataClass) {
+        return updateHandler.getLastUpdates(dataClass);
+    }
+
+    private Set<String> getPresentThingsLinktapIds() {
+        Set<String> linktapIds = new HashSet<>();
+        for (Thing thing : getThing().getThings()) {
+            ThingHandler handler = thing.getHandler();
+            if (handler != null && thing.getStatusInfo().getStatusDetail() != ThingStatusDetail.GONE) {
+                linktapIds.add(((linktapIdentifiable) handler).getId());
+            }
+        }
+        return linktapIds;
+    }
 }

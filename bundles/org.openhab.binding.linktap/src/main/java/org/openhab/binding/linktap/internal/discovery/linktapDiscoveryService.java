@@ -26,14 +26,17 @@ import java.util.stream.Stream;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.config.discovery.AbstractDiscoveryService;
 import org.eclipse.smarthome.config.discovery.DiscoveryResultBuilder;
-import org.eclipse.smarthome.core.semantics.model.equipment.Camera;
-import org.eclipse.smarthome.core.semantics.model.equipment.SmokeDetector;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.ThingUID;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.openhab.binding.linktap.handler.linktapBridgeHandler;
+import org.openhab.binding.linktap.internal.config.LinktapStructureConfiguration;
+import org.openhab.binding.linktap.internal.config.linktapDeviceConfiguration;
+import org.openhab.binding.linktap.internal.data.BaseLinktapDevice;
+import org.openhab.binding.linktap.internal.data.Structure;
+import org.openhab.binding.linktap.internal.data.TP1B;
 import org.openhab.binding.linktap.internal.listener.linktapThingDataListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;;
 
 /**
  * This service connects to the Linktap Gateway and creates the correct discovery results for Linktap devices
@@ -55,8 +58,7 @@ public class linktapDiscoveryService extends AbstractDiscoveryService {
             THING_TYPE_TP1B, this::addDeviceDiscoveryResult);
 
     @SuppressWarnings("rawtypes")
-    private final List<DiscoveryDataListener> discoveryDataListeners = Stream.of(watertimerDiscoveryDataListener,
-            smokeDetectorDiscoveryDataListener, structureDiscoveryDataListener, thermostatDiscoveryDataListener)
+    private final List<DiscoveryDataListener> discoveryDataListeners = Stream.of(watertimerDiscoveryDataListener)
             .collect(Collectors.toList());
 
     private final linktapBridgeHandler bridge;
@@ -83,11 +85,11 @@ public class linktapDiscoveryService extends AbstractDiscoveryService {
         }
 
         @Override
-        public void onMissingData(String nestId) {
+        public void onMissingData(String linktapId) {
         }
     }
 
-    public NestDiscoveryService(NestBridgeHandler bridge) {
+    public linktapDiscoveryService(linktapBridgeHandler bridge) {
         super(SUPPORTED_THING_TYPES, 60, true);
         this.bridge = bridge;
     }
@@ -121,12 +123,12 @@ public class linktapDiscoveryService extends AbstractDiscoveryService {
         lastUpdates.forEach(lastUpdate -> onDiscovered.accept(lastUpdate, thingTypeUID));
     }
 
-    private void addDeviceDiscoveryResult(BaseNestDevice device, ThingTypeUID typeUID) {
+    private void addDeviceDiscoveryResult(BaseLinktapDevice device, ThingTypeUID typeUID) {
         ThingUID bridgeUID = bridge.getThing().getUID();
         ThingUID thingUID = new ThingUID(typeUID, bridgeUID, device.getDeviceId());
         logger.debug("Discovered {}", thingUID);
         Map<String, Object> properties = new HashMap<>();
-        properties.put(NestDeviceConfiguration.DEVICE_ID, device.getDeviceId());
+        properties.put(linktapDeviceConfiguration.DEVICE_ID, device.getDeviceId());
         properties.put(PROPERTY_FIRMWARE_VERSION, device.getSoftwareVersion());
         // @formatter:off
         thingDiscovered(DiscoveryResultBuilder.create(thingUID)
@@ -134,7 +136,7 @@ public class linktapDiscoveryService extends AbstractDiscoveryService {
                 .withLabel(device.getNameLong())
                 .withBridge(bridgeUID)
                 .withProperties(properties)
-                .withRepresentationProperty(NestDeviceConfiguration.DEVICE_ID)
+                .withRepresentationProperty(linktapDeviceConfiguration.DEVICE_ID)
                 .build()
         );
         // @formatter:on
@@ -145,14 +147,14 @@ public class linktapDiscoveryService extends AbstractDiscoveryService {
         ThingUID thingUID = new ThingUID(typeUID, bridgeUID, structure.getStructureId());
         logger.debug("Discovered {}", thingUID);
         Map<String, Object> properties = new HashMap<>();
-        properties.put(NestStructureConfiguration.STRUCTURE_ID, structure.getStructureId());
+        properties.put(LinktapStructureConfiguration.STRUCTURE_ID, structure.getStructureId());
         // @formatter:off
         thingDiscovered(DiscoveryResultBuilder.create(thingUID)
                 .withThingType(THING_TYPE_STRUCTURE)
                 .withLabel(structure.getName())
                 .withBridge(bridgeUID)
                 .withProperties(properties)
-                .withRepresentationProperty(NestStructureConfiguration.STRUCTURE_ID)
+                .withRepresentationProperty(LinktapStructureConfiguration.STRUCTURE_ID)
                 .build()
         );
         // @formatter:on
