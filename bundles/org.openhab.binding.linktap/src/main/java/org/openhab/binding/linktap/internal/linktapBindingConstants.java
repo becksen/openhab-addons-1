@@ -12,6 +12,7 @@
  */
 package org.openhab.binding.linktap.internal;
 
+import java.time.Duration;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -55,7 +56,11 @@ public class linktapBindingConstants {
     public static final String REST_GET_WATERING_STAT = "getWateringStatus";
 
     /** REST API call Content-Type in Header */
-    public static final String REST_CONTENT_TYPE_PARAM = "application/json";
+    public static final String REST_CONTENT_TYPE_PARAM = "application/x-www-form-urlencoded"; // "application/json";
+
+    /** To keep the streaming REST connection alive Nest sends every 30 seconds a message. */
+    // might be removed later on
+    public static final long KEEP_ALIVE_MILLIS = Duration.ofSeconds(30).toMillis();
 
     // List of all Thing Type UIDs
     // public static final ThingTypeUID THING_TYPE_SAMPLE = new ThingTypeUID(BINDING_ID, "sample");

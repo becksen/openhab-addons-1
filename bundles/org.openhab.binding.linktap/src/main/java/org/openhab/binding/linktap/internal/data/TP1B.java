@@ -14,9 +14,8 @@
 package org.openhab.binding.linktap.internal.data;
 
 import java.util.Date;
-import java.util.List;
 
-import org.eclipse.smarthome.core.semantics.model.equipment.Camera;
+//import org.eclipse.smarthome.core.semantics.model.equipment.Camera;
 
 /**
  * TP1B Watertimer details.
@@ -68,9 +67,11 @@ public class TP1B extends BaseLinktapDevice {
         return isPublicShareEnabled;
     }
 
-    /*public List<ActivityZone> getActivityZones() {
-        return activityZones;
-    }*/
+    /*
+     * public List<ActivityZone> getActivityZones() {
+     * return activityZones;
+     * }
+     */
 
     public String getPublicShareUrl() {
         return publicShareUrl;
@@ -80,9 +81,11 @@ public class TP1B extends BaseLinktapDevice {
         return snapshotUrl;
     }
 
-    /*public CameraEvent getLastEvent() {
-        return lastEvent;
-    }*/
+    /*
+     * public CameraEvent getLastEvent() {
+     * return lastEvent;
+     * }
+     */
 
     @Override
     public boolean equals(Object obj) {
@@ -95,14 +98,16 @@ public class TP1B extends BaseLinktapDevice {
         if (getClass() != obj.getClass()) {
             return false;
         }
-         TP1B other = (TP1B) obj;
-        /*if (activityZones == null) {
-            if (other.activityZones != null) {
-                return false;
-            }
-        } else if (!activityZones.equals(other.activityZones)) {
-            return false;
-        }*/
+        TP1B other = (TP1B) obj;
+        /*
+         * if (activityZones == null) {
+         * if (other.activityZones != null) {
+         * return false;
+         * }
+         * } else if (!activityZones.equals(other.activityZones)) {
+         * return false;
+         * }
+         */
         if (appUrl == null) {
             if (other.appUrl != null) {
                 return false;
@@ -138,13 +143,15 @@ public class TP1B extends BaseLinktapDevice {
         } else if (!isVideoHistoryEnabled.equals(other.isVideoHistoryEnabled)) {
             return false;
         }
-        /*if (lastEvent == null) {
-            if (other.lastEvent != null) {
-                return false;
-            }
-        } else if (!lastEvent.equals(other.lastEvent)) {
-            return false;
-        }*/
+        /*
+         * if (lastEvent == null) {
+         * if (other.lastEvent != null) {
+         * return false;
+         * }
+         * } else if (!lastEvent.equals(other.lastEvent)) {
+         * return false;
+         * }
+         */
         if (lastIsOnlineChange == null) {
             if (other.lastIsOnlineChange != null) {
                 return false;
@@ -180,13 +187,13 @@ public class TP1B extends BaseLinktapDevice {
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        //result = prime * result + ((activityZones == null) ? 0 : activityZones.hashCode());
+        // result = prime * result + ((activityZones == null) ? 0 : activityZones.hashCode());
         result = prime * result + ((appUrl == null) ? 0 : appUrl.hashCode());
         result = prime * result + ((isAudioInputEnabled == null) ? 0 : isAudioInputEnabled.hashCode());
         result = prime * result + ((isPublicShareEnabled == null) ? 0 : isPublicShareEnabled.hashCode());
         result = prime * result + ((isStreaming == null) ? 0 : isStreaming.hashCode());
         result = prime * result + ((isVideoHistoryEnabled == null) ? 0 : isVideoHistoryEnabled.hashCode());
-        //result = prime * result + ((lastEvent == null) ? 0 : lastEvent.hashCode());
+        // result = prime * result + ((lastEvent == null) ? 0 : lastEvent.hashCode());
         result = prime * result + ((lastIsOnlineChange == null) ? 0 : lastIsOnlineChange.hashCode());
         result = prime * result + ((publicShareUrl == null) ? 0 : publicShareUrl.hashCode());
         result = prime * result + ((snapshotUrl == null) ? 0 : snapshotUrl.hashCode());
@@ -197,25 +204,27 @@ public class TP1B extends BaseLinktapDevice {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-       /* builder.append("Camera [isStreaming=").append(isStreaming).append(", isAudioInputEnabled=")
+        /*
+         * builder.append("Camera [isStreaming=").append(isStreaming).append(", isAudioInputEnabled=")
+         * .append(isAudioInputEnabled).append(", lastIsOnlineChange=").append(lastIsOnlineChange)
+         * .append(", isVideoHistoryEnabled=").append(isVideoHistoryEnabled).append(", webUrl=").append(webUrl)
+         * .append(", appUrl=").append(appUrl).append(", isPublicShareEnabled=").append(isPublicShareEnabled)
+         * .append(", activityZones=").append(activityZones).append(", publicShareUrl=").append(publicShareUrl)
+         * .append(", snapshotUrl=").append(snapshotUrl).append(", lastEvent=").append(lastEvent)
+         * .append(", getId()=").append(getId()).append(", getName()=").append(getName())
+         * .append(", getDeviceId()=").append(getDeviceId()).append(", getLastConnection()=")
+         * .append(getLastConnection()).append(", isOnline()=").append(isOnline()).append(", getNameLong()=")
+         * .append(getNameLong()).append(", getSoftwareVersion()=").append(getSoftwareVersion())
+         * .append(", getStructureId()=").append(getStructureId()).append(", getWhereId()=").append(getWhereId())
+         * .append("]");
+         */
+
+        builder.append("Camera [isStreaming=").append(isStreaming).append(", isAudioInputEnabled=")
                 .append(isAudioInputEnabled).append(", lastIsOnlineChange=").append(lastIsOnlineChange)
                 .append(", isVideoHistoryEnabled=").append(isVideoHistoryEnabled).append(", webUrl=").append(webUrl)
                 .append(", appUrl=").append(appUrl).append(", isPublicShareEnabled=").append(isPublicShareEnabled)
-                .append(", activityZones=").append(activityZones).append(", publicShareUrl=").append(publicShareUrl)
-                .append(", snapshotUrl=").append(snapshotUrl).append(", lastEvent=").append(lastEvent)
+                .append(", publicShareUrl=").append(publicShareUrl).append(", snapshotUrl=").append(snapshotUrl)
                 .append(", getId()=").append(getId()).append(", getName()=").append(getName())
-                .append(", getDeviceId()=").append(getDeviceId()).append(", getLastConnection()=")
-                .append(getLastConnection()).append(", isOnline()=").append(isOnline()).append(", getNameLong()=")
-                .append(getNameLong()).append(", getSoftwareVersion()=").append(getSoftwareVersion())
-                .append(", getStructureId()=").append(getStructureId()).append(", getWhereId()=").append(getWhereId())
-                .append("]");*/
-                
-                builder.append("Camera [isStreaming=").append(isStreaming).append(", isAudioInputEnabled=")
-                .append(isAudioInputEnabled).append(", lastIsOnlineChange=").append(lastIsOnlineChange)
-                .append(", isVideoHistoryEnabled=").append(isVideoHistoryEnabled).append(", webUrl=").append(webUrl)
-                .append(", appUrl=").append(appUrl).append(", isPublicShareEnabled=").append(isPublicShareEnabled)
-                .append(", publicShareUrl=").append(publicShareUrl)
-                .append(", snapshotUrl=").append(snapshotUrl).append(", getId()=").append(getId()).append(", getName()=").append(getName())
                 .append(", getDeviceId()=").append(getDeviceId()).append(", getLastConnection()=")
                 .append(getLastConnection()).append(", isOnline()=").append(isOnline()).append(", getNameLong()=")
                 .append(getNameLong()).append(", getSoftwareVersion()=").append(getSoftwareVersion())

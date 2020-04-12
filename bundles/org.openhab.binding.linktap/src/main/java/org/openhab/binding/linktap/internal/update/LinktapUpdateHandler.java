@@ -108,6 +108,7 @@ public class LinktapUpdateHandler<T> {
         return getOrCreateListeners(nestId).remove(listener);
     }
 
+    // TODO remove nestId
     public void resendLastUpdates() {
         lastUpdates.forEach((nestId, update) -> notifyListeners(nestId, null, update));
     }
