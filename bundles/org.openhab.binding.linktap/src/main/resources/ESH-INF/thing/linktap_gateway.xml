@@ -12,7 +12,9 @@
 			<channel typeId="status" id="status"></channel>
 		</channels>
 		<properties>
-			<property name="gatewayId">Unique Identifier of the  Gateway</properties>
+			<property name="gatewayId">Unique Identifier of the  Gateway
+			</property>
+		</properties>
 		<representation-property>gatewayId</representation-property>
 		<config-description>
 			<parameter name="gatewayId" type="text" required="true">
