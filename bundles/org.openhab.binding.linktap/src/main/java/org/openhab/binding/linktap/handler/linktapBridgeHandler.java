@@ -111,6 +111,8 @@ public class linktapBridgeHandler extends BaseBridgeHandler implements linktapSt
         config = getConfigAs(LinktapBridgeConfiguration.class);
         authorizer = new LinktapConnectionTest(config);
         // TODO currently it hangs with unknown status.
+
+        // sets thingstatus to Unknown
         updateStatus(ThingStatus.UNKNOWN, ThingStatusDetail.NONE, "Starting poll query");
 
         /*
@@ -133,7 +135,7 @@ public class linktapBridgeHandler extends BaseBridgeHandler implements linktapSt
             } catch (InvalidConnectionParameters e) {
                 logger.debug("Invalid access token", e);
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.CONFIGURATION_ERROR,
-                        "Token is invalid and could not be refreshed: " + e.getMessage());
+                        "Api Key is invalid and could not be refreshed: " + e.getMessage());
             }
         }, 0, TimeUnit.SECONDS);
 
@@ -241,6 +243,7 @@ public class linktapBridgeHandler extends BaseBridgeHandler implements linktapSt
     protected Properties getHttpHeaders() throws InvalidConnectionParameters {
         Properties httpHeaders = new Properties();
         // httpHeaders.put("Authorization", "Bearer " + getExistingOrNewAccessToken());
+        // set httpheader to application/x-www-form-urlencoded
         httpHeaders.put("Content-Type", REST_CONTENT_TYPE_PARAM);
         return httpHeaders;
     }

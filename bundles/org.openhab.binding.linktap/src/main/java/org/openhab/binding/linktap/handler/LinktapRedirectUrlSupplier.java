@@ -55,8 +55,10 @@ public class LinktapRedirectUrlSupplier {
         HttpClient httpClient = new HttpClient(new SslContextFactory());
         httpClient.setFollowRedirects(false);
 
-        Request request = httpClient.newRequest(linktapBindingConstants.REST_URL).method(HttpMethod.GET).timeout(30,
-                TimeUnit.SECONDS);
+        // Request request = httpClient.newRequest(linktapBindingConstants.REST_URL).method(HttpMethod.GET).timeout(30,
+        Request request = httpClient
+                .newRequest(linktapBindingConstants.REST_URL + linktapBindingConstants.REST_GET_DEVICES)
+                .method(HttpMethod.POST).timeout(30, TimeUnit.SECONDS);
         for (String httpHeaderKey : httpHeaders.stringPropertyNames()) {
             request.header(httpHeaderKey, httpHeaders.getProperty(httpHeaderKey));
         }

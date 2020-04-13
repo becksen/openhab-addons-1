@@ -23,7 +23,7 @@ public class LinktapStreamingRequestFilter implements ClientRequestFilter {
         if (requestContext != null) {
             MultivaluedMap<String, Object> headers = requestContext.getHeaders();
             headers.add(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken);
-            headers.add(HttpHeaders.CACHE_CONTROL, "no-cache");
+            // headers.add(HttpHeaders.CACHE_CONTROL, "no-cache");
         }
     }
 }
