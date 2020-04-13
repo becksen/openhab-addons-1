@@ -17,7 +17,7 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 
 /**
- * The configuration for the Nest bridge, allowing it to talk to Nest.
+ * The configuration for the Linktap Gateway, allowing it to talk to Linktap cloud.
  *
  * @author Timmy Becker - Initial contribution
  */
@@ -31,7 +31,7 @@ public class LinktapBridgeConfiguration {
     /** Product secret from the Nest product page. */
     public String productSecret = "";
 
-    public static final String USERNAME = "usernam";
+    public static final String USERNAME = "username";
     /** Product Username from the Nest authorization page. */
     public @Nullable String username;
 

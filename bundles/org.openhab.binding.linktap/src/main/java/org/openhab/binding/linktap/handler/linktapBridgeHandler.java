@@ -110,6 +110,7 @@ public class linktapBridgeHandler extends BaseBridgeHandler implements linktapSt
         logger.debug("Initializing Linktap bridge handler");
         config = getConfigAs(LinktapBridgeConfiguration.class);
         authorizer = new LinktapConnectionTest(config);
+        // TODO currently it hangs with unknown status.
         updateStatus(ThingStatus.UNKNOWN, ThingStatusDetail.NONE, "Starting poll query");
 
         /*

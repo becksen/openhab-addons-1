@@ -34,7 +34,8 @@ public class LinktapConnectionTest {
         key = config.apiKey;
 
         if (key == null) {
-            return "123456";
+            // return "123456";
+            throw new InvalidConnectionParameters("Invalid Api Key");
         }
         return key;
     }
