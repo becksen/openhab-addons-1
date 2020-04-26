@@ -58,6 +58,9 @@ public class linktapBindingConstants {
     /** REST API call Content-Type in Header */
     public static final String REST_CONTENT_TYPE_PARAM = "application/x-www-form-urlencoded"; // "application/json";
 
+    // ** REST API timeout for resolveRedirectUrl() */
+    public static final int REST_TIMEOUT = 30;
+
     /** To keep the streaming REST connection alive Nest sends every 30 seconds a message. */
     // might be removed later on
     public static final long KEEP_ALIVE_MILLIS = Duration.ofSeconds(30).toMillis();
