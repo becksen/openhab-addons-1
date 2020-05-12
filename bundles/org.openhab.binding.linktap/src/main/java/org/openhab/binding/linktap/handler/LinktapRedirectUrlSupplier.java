@@ -1,17 +1,9 @@
 package org.openhab.binding.linktap.handler;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 import org.apache.commons.httpclient.HttpException;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-//import org.apache.commons.httpclient.HttpClient;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.io.net.http.HttpUtil;
 import org.openhab.binding.linktap.internal.linktapBindingConstants;
@@ -63,6 +55,8 @@ public class LinktapRedirectUrlSupplier {
     private String resolveRedirectUrl() throws FailedResolvingLinktapUrlException {
         // byte[] content = null;
         // this.config = config;
+
+        // TODO User new Rest capabilities
         String jsonString = "{\"username\":\"becksen\",\"apiKey\":\"ab4a9eae49a3ed8ea52d2443dd6bc9b9125efac354a7c44f8afc014a623dbc87\"}";
 
         for (String httpHeaderKey : httpHeaders.stringPropertyNames()) {
@@ -72,27 +66,30 @@ public class LinktapRedirectUrlSupplier {
 
         String postUrl = linktapBindingConstants.REST_URL + linktapBindingConstants.REST_GET_DEVICES;// put in your url
         Gson gson = new Gson();
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost post = new HttpPost(postUrl);
-        StringEntity postingString = null;
-        try {
-            postingString = new StringEntity(gson.toJson(jsonString));
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } // gson.tojson() converts your pojo to
-          // json
-        post.setEntity(postingString);
-        post.setHeader("Content-type", "application/json");
-        try {
-            HttpResponse response = httpClient.execute(post);
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+
+        /*
+         * HttpClient httpClient = HttpClientBuilder.create().build();
+         * HttpPost post = new HttpPost(postUrl);
+         * StringEntity postingString = null;
+         * try {
+         * postingString = new StringEntity(gson.toJson(jsonString));
+         * } catch (UnsupportedEncodingException e) {
+         * // TODO Auto-generated catch block
+         * e.printStackTrace();
+         * } // gson.tojson() converts your pojo to
+         * // json
+         * post.setEntity(postingString);
+         * post.setHeader("Content-type", "application/json");
+         * try {
+         * HttpResponse response = httpClient.execute(post);
+         * } catch (ClientProtocolException e) {
+         * // TODO Auto-generated catch block
+         * e.printStackTrace();
+         * } catch (IOException e) {
+         * // TODO Auto-generated catch block
+         * e.printStackTrace();
+         * }
+         */
         return postUrl;
 
         /*
